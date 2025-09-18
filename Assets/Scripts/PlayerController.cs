@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _canJump = false;
 
+    [SerializeField] private GameManager gameManager;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,5 +64,17 @@ public class PlayerController : MonoBehaviour
     public void ModifyCanJump(bool b)
     {
         _canJump = b;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("limit"))
+        {
+            gameManager.GameOver();
+        }
+        if (other.CompareTag("goal"))
+        {
+            gameManager.WinGame();
+        }
     }
 }
