@@ -59,4 +59,8 @@ public class PlayerController : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         } 
     }
+    public void ModifyCanJump(bool b)
+    {
+        _canJump = b;
+    }
 }

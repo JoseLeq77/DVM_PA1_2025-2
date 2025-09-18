@@ -14,9 +14,13 @@ public class GameManager : MonoBehaviour
         if (context.performed)
         {
             Players[index].enabled = false;
-            Players[index + 1].enabled = true;
+            Players[index].ModifyCanJump(false);
+
             index++;
             index %= Players.Length;
+
+            Players[index].enabled = true;
+            Players[index].ModifyCanJump(true);
         }
     }
 
@@ -25,9 +29,13 @@ public class GameManager : MonoBehaviour
         if (context.performed)
         {
             Players[index].enabled = false;
-            Players[index - 1].enabled = true;
+            Players[index].ModifyCanJump(false);
+
             index--;
             index = index < 0 ? Players.Length - 1 : index;
+
+            Players[index].enabled = true;
+            Players[index].ModifyCanJump(true);
         }
     }
 }
